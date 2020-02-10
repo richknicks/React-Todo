@@ -1,6 +1,6 @@
 import React from 'react';
-import TodoForm from './components/TodoComponents/TodoForm';
-
+import ToDoForm from './components/TodoComponents/TodoForm';
+import ToDoList from './components/TodoComponents/TodoList'
 const myList =[
   {
     task:'',
@@ -16,7 +16,8 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      myTodoList: myList
+      myTodoList: myList,
+      newTask:''
     };
   }
   toggleItem = clickedItem => {
@@ -42,13 +43,27 @@ class App extends React.Component {
     };
     this.setState({
       myTodoList: [...this.state.myTodoList, newTask]
-    })
-  }
+    });
+  };
+  handleChanges = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+      
+    });
+  };
+
+  
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.addNewItem(this.state.newTask);
+    this.setState({ newTask: '' });
+  };
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm/>
+        <TodoForm addNewItems={this.addNewItems} handleChanges={this.handleChanges} handleSubmit={this.handleSubmit}/>
+        <ToDoList />
       </div>
     );
   }
