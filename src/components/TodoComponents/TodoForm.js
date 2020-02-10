@@ -2,15 +2,15 @@ import React from 'react';
 
 
 const ToDoForm = props => {
-        return
+        return(
      
-       (<form onSubmit={props.handleSubmit}>
+       <form onSubmit={props.handleSubmit}>
            
-               <input type="text" value="props.newTask" name="todoItem" onChange={props.handleChanges}/>
+               <input type="text" value={props.newTask} name="todoItem" onChange={props.handleChanges}/>
                 <button type="submit">Add</button>
                 <button type="submit">Delete</button>
-           </form> );
-
+           </form> 
+        )
     };
 
 export default ToDoForm;

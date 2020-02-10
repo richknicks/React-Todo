@@ -1,5 +1,5 @@
 import React from 'react';
-import ToDoForm from './components/TodoComponents/TodoForm';
+import ToDoForm from './components/TodoComponents/TodoForm'
 import ToDoList from './components/TodoComponents/TodoList'
 const myList =[
   {
@@ -62,8 +62,8 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addNewItems={this.addNewItems} handleChanges={this.handleChanges} handleSubmit={this.handleSubmit}/>
-        <ToDoList />
+        <ToDoForm addNewItems={this.addNewItems} handleChanges={this.handleChanges} handleSubmit={this.handleSubmit}/>
+        <ToDoList toggleItem={this.toggleItem} myList={myList}/>
       </div>
     );
   }
