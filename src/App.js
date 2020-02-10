@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 const myList =[
   {
@@ -18,10 +19,36 @@ class App extends React.Component {
       myTodoList: myList
     };
   }
+  toggleItem = clickedItem => {
+    const newTodoList = this.state.myTodoList.map(item => {
+      if(item.id === clickedItem){
+        return{
+          ...item,
+          completed: !item.completed
+        };
+      } else {
+        return item;
+      }
+    });
+    this.setState({
+      myTodoList: newTodoList
+    });
+  };
+  addNewItem = taskText => {
+    const newTask = {
+      task: taskText,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      myTodoList: [...this.state.myTodoList, newTask]
+    })
+  }
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
+        <TodoForm/>
       </div>
     );
   }
