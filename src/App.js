@@ -53,7 +53,14 @@ class App extends React.Component {
       
     });
   };
-
+  clearCompleted = () => {
+    const newTask = this.state.myTodoList.filter( item => 
+      !item.completed 
+    )
+    this.setState({
+      myTodoList: newTask
+    })
+  }
   
   handleSubmit = e => {
     e.preventDefault();
@@ -65,7 +72,7 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <ToDoForm addNewItems={this.addNewItems} handleChanges={this.handleChanges} handleSubmit={this.handleSubmit}/>
-        <ToDoList toggleItem={this.toggleItem} myList={this.state.myTodoList}/>
+        <ToDoList toggleItem={this.toggleItem} clearCompleted={this.clearCompleted} myList={this.state.myTodoList}/>
       </div>
     );
   }
