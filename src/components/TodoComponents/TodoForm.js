@@ -8,7 +8,7 @@ const ToDoForm = props => {
            
                <input type="text" value={props.newTask} name="todoItem" onChange={props.handleChanges}/>
                 <button type="submit">Add</button>
-                <button type="submit">Delete</button>
+                
            </form> 
         )
     };
